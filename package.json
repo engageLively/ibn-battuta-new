@@ -1,0 +1,26 @@
+{
+  "name": "engageLively--ibn-battuta-new",
+  "author": {
+    "name": "rickmcgeer"
+  },
+  "description": "The Ibn-battuta intro, with Lively project structure",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/engageLively/ibn-battuta-new"
+  },
+  "scripts": {
+    "build": "rm -rf build/* && export MINIFY='' && ./tools/build.sh",
+    "build-minified": "rm -rf build/* && export MINIFY=true && ./tools/build.sh"
+  },
+  "dependencies": {
+    "@rollup/plugin-json": "4.1.0",
+    "rollup": "^2.70.2",
+    "rollup-plugin-export-default": "1.4.0",
+    "rollup-plugin-polyfill-node": "0.9.0"
+  },
+  "lively": {
+    "projectDependencies": [],
+    "boundLivelyVersion": "34f27b39a9805265b86369a67ee0ffe665dc1f8e"
+  },
+  "version": "0.1.1"
+}
