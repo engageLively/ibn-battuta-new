@@ -19,7 +19,14 @@ const build = await rollup({
       minify,
       asBrowserModule: true,
       excludedModules: [
-	    'lively.collab',
+        'lively.ast',
+        'lively.vm',
+        'lively.ide',
+        'lively.modules',
+        'babel-plugin-transform-jsx',
+        'lively-system-interface',
+        'lively.storage',
+        'lively.collab',
         'mocha-es6','mocha', // references old lgtg that breaks the build
         'rollup', // has a dist file that cant be parsed by rollup
         // other stuff that is only needed by rollup
@@ -32,7 +39,7 @@ const build = await rollup({
       ],
       resolver
     }),
-    jsonPlugin(),
+    jsonPlugin({ exclude: /https\:\/\/jspm.dev\/.*\.json/}),
     babel({
      babelHelpers: 'bundled', 
      presets: [PresetEnv]

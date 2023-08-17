@@ -20,7 +20,7 @@
   },
   "lively": {
     "projectDependencies": [],
-    "boundLivelyVersion": "34f27b39a9805265b86369a67ee0ffe665dc1f8e"
+    "boundLivelyVersion": "d4d0e01754bd78ba5b631610c6af6d053f8d0269"
   },
-  "version": "0.1.1"
+  "version": "0.2.0"
 }
