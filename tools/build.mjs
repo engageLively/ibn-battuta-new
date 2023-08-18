@@ -26,6 +26,7 @@ const build = await rollup({
         'babel-plugin-transform-jsx',
         'lively-system-interface',
         'lively.storage',
+        'lively.source-transform',
         'lively.collab',
         'mocha-es6','mocha', // references old lgtg that breaks the build
         'rollup', // has a dist file that cant be parsed by rollup
