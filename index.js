@@ -1,12 +1,9 @@
+'format esm';
 /* global Audio */
-/* global Audio */
-/* global Audio */
-import { Image, HTMLMorph, Text, Morph, part, Ellipse } from 'lively.morphic';
+import { Image, World, HTMLMorph, Text, Morph, part, Ellipse } from 'lively.morphic';
 import { pt, Color } from 'lively.graphics';
-import { LivelyWorld } from 'lively.ide/world.js';
 import { ButtonDefault } from 'lively.components/buttons.cp.js';
 import { VideoMorph } from 'lively.components/video.js';
-'format esm';
 
 class GamePortal extends Morph {
   static get properties () {
@@ -535,7 +532,7 @@ export class InTheFootstepsHolder extends Morph {
   }
 }
 
-export class InTheFootstepsWorld extends LivelyWorld {
+export class InTheFootstepsWorld extends World {
 }
 
 export async function main () {
