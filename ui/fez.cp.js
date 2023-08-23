@@ -15,7 +15,7 @@ class FezMarketModel extends ViewModel {
       bindings: {
         get () {
           return [
-            { target: /.* pack/, signal: 'onMouseUp', signal: 'selectPack', converter: '() => source.name' }
+            { target: /.* pack/, signal: 'onMouseUp', handler: 'selectPack', converter: '() => source.name' }
           ];
         }
       },
@@ -60,8 +60,7 @@ class FezMarketModel extends ViewModel {
     const { artisansPack, explorersPack, merchantsPack, nomadsPack, scholarsPack } = this.ui;
     [artisansPack, explorersPack, merchantsPack, nomadsPack, scholarsPack].forEach(m => m.reactsToPointer = true);
     this.ui.packSelection.visible = true;
-    const p = promise.deferred();
-    once(this, 'selectPack', () => p.resolve(true));
+    const p = this._packPromise = promise.deferred();
     return p.promise;
   }
 
@@ -107,6 +106,8 @@ class FezMarketModel extends ViewModel {
       }
     };
     this.fillInventory(packs[packName]);
+    this.hidePacks();
+    this._packPromise?.resolve(true);
   }
 
   viewDidLoad () {

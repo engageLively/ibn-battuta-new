@@ -1,7 +1,7 @@
 import { component, ConstraintLayout, TilingLayout, part, ViewModel } from 'lively.morphic';
 import { IntroScene } from './intro.cp.js';
 import { FezMarketUI } from './fez.cp.js';
-import { pt } from 'lively.graphics';
+import { pt, Color } from 'lively.graphics';
 
 class InTheFootsteps extends ViewModel {
   static get properties () {
@@ -32,10 +32,11 @@ class InTheFootsteps extends ViewModel {
     window.postMessage({ message: 'enter fez' }, '*'); // navigate over to the fez market scene
   }
 
-  startIntro () {
+  async showPacks () {
     this.view.submorphs.forEach(m => m.visible = false);
     this.ui.fez.visible = true;
-    this.ui.fez.showPackOverview();
+    await this.ui.fez.showPackOverview();
+    window.postMessage({ message: 'finished showing packs' }, '*');
   }
 
   async startPackSelection () {
