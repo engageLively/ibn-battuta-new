@@ -61,6 +61,7 @@ class InTheFootsteps extends ViewModel {
 
 export const InTheFootstepsHolder = component({
   defaultViewModel: InTheFootsteps,
+  fill: Color.transparent,
   layout: new TilingLayout({
     orderByIndex: true,
     resizePolicies: [['intro', {
