@@ -21,7 +21,12 @@
   "lively": {
     "projectDependencies": [],
     "boundLivelyVersion": "089c8731c6c9187f85257add517234acf9fd7a4c",
-    "canUsePages": true
+    "canUsePages": true,
+    "testActionEnabled": true,
+    "buildActionEnabled": true,
+    "deployActionEnabled": true,
+    "testOnPush": false,
+    "buildOnPush": false
   },
-  "version": "0.2.1"
+  "version": "0.2.2"
 }
