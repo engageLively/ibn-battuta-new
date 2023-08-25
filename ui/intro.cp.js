@@ -276,7 +276,7 @@ export const IntroScene = component({
         extent: pt(1166, 655.6),
         position: pt(-2.7, -12.5),
         codec: 'video/mp4',
-        src: projectAsset('ibn NEW MAP VIDEO 2.mp4'),
+        src: projectAsset('Ibn NEW MAP VIDEO 2.mp4'),
         submorphs: [part(TrailLayer, {
           name: 'fez to taghaza',
           extent: pt(119.2, 233.8),
