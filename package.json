@@ -20,8 +20,8 @@
   },
   "lively": {
     "projectDependencies": [],
-    "boundLivelyVersion": "cf0c5a74654d086b638f31169e9de066ec121327",
+    "boundLivelyVersion": "089c8731c6c9187f85257add517234acf9fd7a4c",
     "canUsePages": true
   },
-  "version": "0.2.0"
+  "version": "0.2.1"
 }
