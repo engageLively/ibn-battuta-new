@@ -1,12 +1,12 @@
 {
-  "name": "engageLively--ibn-battuta-new",
+  "name": "ultisim--ibn-battuta-new",
   "author": {
     "name": "rickmcgeer"
   },
   "description": "The Ibn-battuta intro, with Lively project structure",
   "repository": {
     "type": "git",
-    "url": "https://github.com/engageLively/ibn-battuta-new"
+    "url": "https://github.com/ultisim/ibn-battuta-new"
   },
   "scripts": {
     "build": "rm -rf build/* && export MINIFY='' && ./tools/build.sh",
