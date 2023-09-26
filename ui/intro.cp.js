@@ -137,50 +137,44 @@ class IntroSceneModel extends ViewModel {
       duration,
       easing
     });
+    pv.start();
   }
 
   showFez () {
-    this.show360View('https://www.360cities.net/image/al-attarine-madrasa-fes-morocco-1');
-    this.playAudio(projectAsset('360-panorama-audio/Fes.mp3'));
+    this.show360View(projectAsset('scenes/fez.mp4'));
   }
 
   showTimbuktu () {
     // tbd
-    // this.show360View(...)
-    // this.playAudio(projectAsset('360-panorama-audio/Timbuktu.mp3'));
+    this.show360View(projectAsset('scenes/timbuktu.mp4'));
   }
 
   showTaghaza () {
     // still requires a proper 360 degree link (how to turn shutterstock jpg into 360 degree view)?
-    // this.show360View(...)
-    // this.playAudio(projectAsset('360-panorama-audio/Taghaza.mp3'));
+    this.show360View(projectAsset('scenes/taghaza.mp4'));
   }
 
   showCaravan () {
     // open up the 360 degree view of the caravan
-    this.show360View('https://www.360cities.net/image/dromedaries-in-the-desert'); // caravan url (paid link)
-    this.playAudio(projectAsset('360-panorama-audio/Camel Caravan.mp3'));
+    this.show360View(projectAsset('scenes/caravan.mp4')); // caravan url (paid link)
   }
 
   showSahara () {
     // open up the 360 degree view of the sahara
-    this.show360View('https://www.360cities.net/paid_embed_iframe/b80adc67a0/sunrise-over-saharan-desert-erg-chebbi-morocco');
-    this.playAudio(projectAsset('360-panorama-audio/Sahara with wind.mp3'));
+    this.show360View(projectAsset('scenes/sahara.mp4'));
   }
 
   showMansaMusa () {
     // not yet implemented. Should somehow dispaly a 3D model of the king.
-    // this.playAudio(projectAsset('360-panorama-audio/Mansa Musa.mp3'));
+    this.show360View(projectAsset('scenes/mansa-musa.mp4'));
   }
 
   showBenin () {
-    this.show360View('https://www.360cities.net/image/the-benin-wall-the-benin-moat-benin-city-nigaria-africa');
-    this.playAudio(projectAsset('360-panorama-audio/Benin.mp3'));
+    this.show360View(projectAsset('scenes/benin.mp4'));
   }
 
   showForest () {
-    this.show360View('https://www.360cities.net/image/081112-andasibe-mada-003-africa'); // forest url (paid link)
-    this.playAudio(projectAsset('360-panorama-audio/Forest.mp3'));
+    this.show360View(projectAsset('scenes/forest.mp4')); // forest url (paid link)
   }
 
   relayout () {
@@ -203,18 +197,24 @@ class PanoramaViewerModel extends ViewModel {
           ];
         }
       },
-      expose: { get () { return ['panorama']; } }
+      expose: { get () { return ['panorama', 'start']; } }
     };
+  }
+
+  start () {
+    this.ui.panoramaView.startPlaying();
+    this.ui.panoramaView.videoDomElement.onended = () => this.close();
   }
 
   onRefresh (prop) {
     if (prop === 'panorama') {
-      this.ui.panoramaView.html = `<iframe src="${this.panorama}" width="100%" height="100%" style="border: 0;"></iframe>`;
+      this.ui.panoramaView.src = this.panorama;
     }
   }
 
   close () {
     signal(this.view, 'close');
+    this.ui.panoramaView.stopPlaying();
   }
 }
 
@@ -239,10 +239,11 @@ const PanoramaViewer = component({
     }]]
   }),
   submorphs: [{
-    type: 'html',
+    type: VideoMorph,
     name: 'panorama view',
     extent: pt(705.6, 404.3),
-    html: '<iframe src="https://www.360cities.net/paid_embed_iframe/b80adc67a0/sunrise-over-saharan-desert-erg-chebbi-morocco" width="100%" height="100%" style="border: 0;"></iframe>'
+    codec: 'video/mp4',
+    src: projectAsset('scenes/sahara.mp4')
   }, {
     type: Text,
     name: 'close button',

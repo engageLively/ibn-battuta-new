@@ -15,7 +15,7 @@ class FezMarketModel extends ViewModel {
       bindings: {
         get () {
           return [
-            { target: /.* pack/, signal: 'onMouseUp', handler: 'selectPack', converter: '() => source.name' }
+            { target: /.* pack/, signal: 'onMouseUp', handler: 'selectPack', converter: '() => source.name.replace(" pack", "")' }
           ];
         }
       },
@@ -56,15 +56,18 @@ class FezMarketModel extends ViewModel {
   }
 
   enterPackSelection () {
+    this._allowPackSelection = false;
     // now the user can actually start selection the packs
     const { artisansPack, explorersPack, merchantsPack, nomadsPack, scholarsPack } = this.ui;
     [artisansPack, explorersPack, merchantsPack, nomadsPack, scholarsPack].forEach(m => m.reactsToPointer = true);
     this.ui.packSelection.visible = true;
     const p = this._packPromise = promise.deferred();
+    promise.delay(1000).then(() => this._allowPackSelection = true);
     return p.promise;
   }
 
   selectPack (packName) {
+    if (!this._allowPackSelection) return;
     const packs = {
       artisan: {
         camels: 3,
