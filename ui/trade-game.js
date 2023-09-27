@@ -10,7 +10,7 @@ class TradeGame extends Morph {
         get () {
           return [
             { target: 'buy button', signal: 'onMouseUp', handler: 'buy' },
-            { target: 'reset button', signal: 'onMouseUp', handler: 'reset' },
+            { target: 'reset button', signal: 'onMouseUp', handler: 'resetInventory' },
             { target: 'done button', signal: 'onMouseUp', handler: 'done' }
           ];
         }
